@@ -1,0 +1,40 @@
+---
+title: ethosian
+---
+
+## Example
+
+The following agent will use the ethosian toolkit to create and manage ethosian workspaces. It can create new applications from templates like llm-app, api-app, django-app, and streamlit-app. It can also start existing workspaces and validate that ethosian is ready to run commands.
+
+```python cookbook/tools/eth_tools.py
+from ethosian.agent import Agent
+from ethosian.tools.ethosian import EthTools
+
+# Create an Agent with the ethosian tool
+agent = Agent(tools=[EthTools()], name="ethosian Workspace Manager")
+
+# Example 1: Create a new agent app
+agent.print_response("Create a new agent-app called agent-app-turing", markdown=True)
+
+# Example 3: Start a workspace
+agent.print_response("Start the workspace agent-app-turing", markdown=True)
+```
+
+## Toolkit Params
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `name` | `str` | `"eth_tools"` | The name of the tool |
+
+## Toolkit Functions
+
+| Function | Description |
+|----------|-------------|
+| `validate_eth_is_ready` | Validates that ethosian is ready to run commands |
+| `create_new_app` | Creates a new ethosian workspace for a given application template |
+| `start_user_workspace` | Starts the workspace for a user |
+
+
+## Information
+
+- View on [Github](https://github.com/ethosianhq/ethosian/blob/main/ethosian/tools/ethosian.py)

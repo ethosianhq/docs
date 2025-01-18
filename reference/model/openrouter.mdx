@@ -1,0 +1,32 @@
+---
+title: OpenRouter
+sidebarTitle: OpenRouter
+---
+
+## Example
+
+<CodeGroup>
+
+```python agent.py
+
+from ethosian.agent import Agent
+from ethosian.model.openrouter import OpenRouter
+from ethosian.tools.yfinance import YFinanceTools
+
+agent = Agent(
+model=OpenRouter(id="gpt-4o"),
+tools=[YFinanceTools(stock_price=True)],
+show_tool_calls=True,
+markdown=True,
+)
+
+agent.print_response("What is the stock price of NVDA and TSLA")
+```
+
+</CodeGroup>
+
+## OpenRouter Params
+
+<Snippet file="model-openrouter-params.mdx" />
+
+`OpenRouter` is a subclass of the [OpenAILike](/reference/model/openai-like) class and has access to the same params.

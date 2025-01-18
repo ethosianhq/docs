@@ -1,0 +1,381 @@
+---
+title: Introduction
+---
+
+A ethosian template creates a **Workspace**, which is just an umbrella term for your codebase.
+
+## Create new workspace
+
+Run `ethosian ws create` to create a new workspace using a ethosian template
+
+<CodeGroup>
+
+```bash Create Workspace
+ethosian ws create
+```
+
+```bash Create AI App
+ethosian ws create -t ai-app -n ai-app
+```
+
+```bash Create AI Api
+ethosian ws create -t api-app -n api-app
+```
+
+```bash Create Django App
+ethosian ws create -t django-app -n web-app
+```
+
+</CodeGroup>
+
+<br />
+
+<Note>
+
+`ethosian` will ask for a workspace template and name if not provided.
+
+</Note>
+
+## Setup existing workspace
+
+Run `ethosian ws setup` to setup an existing directory as a ethosian workspace
+
+<CodeGroup>
+
+```bash terminal
+ethosian ws setup
+```
+
+```bash with debug logs
+ethosian ws setup -d
+```
+
+</CodeGroup>
+
+## Start workspace
+
+Run `ethosian ws up` to create workspace resources
+
+<CodeGroup>
+
+```bash terminal
+ethosian ws up
+```
+
+```bash shorthand
+ethosian ws up dev:docker
+```
+
+```bash full options
+ethosian ws up --env dev --infra docker
+```
+
+```bash short options
+ethosian ws up -e dev -i docker
+```
+
+</CodeGroup>
+
+## Stop workspace
+
+Run `ethosian ws down` to delete workspace resources
+
+<CodeGroup>
+
+```bash terminal
+ethosian ws down
+```
+
+```bash shorthand
+ethosian ws down dev:docker
+```
+
+```bash full options
+ethosian ws down --env dev --infra docker
+```
+
+```bash short options
+ethosian ws down -e dev -i docker
+```
+
+</CodeGroup>
+
+## Patch workspace
+
+Run `ethosian ws patch` to update workspace resources
+
+<CodeGroup>
+
+```bash terminal
+ethosian ws patch
+```
+
+```bash shorthand
+ethosian ws patch dev:docker
+```
+
+```bash full options
+ethosian ws patch --env dev --infra docker
+```
+
+```bash short options
+ethosian ws patch -e dev -i docker
+```
+
+</CodeGroup>
+
+<br />
+
+<Note>
+
+The `patch` command in under development for some resources. Use `restart` if needed
+
+</Note>
+
+## Restart workspace
+
+Run `ethosian ws restart` to stop resources and start them again
+
+<CodeGroup>
+
+```bash terminal
+ethosian ws restart
+```
+
+```bash shorthand
+ethosian ws restart dev:docker
+```
+
+```bash full options
+ethosian ws restart --env dev --infra docker
+```
+
+```bash short options
+ethosian ws restart -e dev -i docker
+```
+
+</CodeGroup>
+
+## Command Options
+
+<Note>Run `ethosian ws up --help` to view all options</Note>
+
+### Environment (`--env`)
+
+Use the `--env` or `-e` flag to filter the environment (dev/prd)
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --env dev
+```
+
+```bash shorthand
+ethosian ws up dev
+```
+
+```bash short options
+ethosian ws up -e dev
+```
+
+</CodeGroup>
+
+### Infra (`--infra`)
+
+Use the `--infra` or `-i` flag to filter the infra (docker/aws/k8s)
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --infra docker
+```
+
+```bash shorthand
+ethosian ws up :docker
+```
+
+```bash short options
+ethosian ws up -i docker
+```
+
+</CodeGroup>
+
+### Group (`--group`)
+
+Use the `--group` or `-g` flag to filter by resource group.
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --group app
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  --group app
+```
+
+```bash shorthand
+ethosian ws up dev:docker:app
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -g app
+```
+
+</CodeGroup>
+
+### Name (`--name`)
+
+Use the `--name` or `-n` flag to filter by resource name
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --name app
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  --name app
+```
+
+```bash shorthand
+ethosian ws up dev:docker::app
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -n app
+```
+
+</CodeGroup>
+
+### Type (`--type`)
+
+Use the `--type` or `-t` flag to filter by resource type.
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --type container
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  --type container
+```
+
+```bash shorthand
+ethosian ws up dev:docker:app::container
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -t container
+```
+
+</CodeGroup>
+
+### Dry Run (`--dry-run`)
+
+The `--dry-run` or `-dr` flag can be used to **dry-run** the command. `ethosian ws up -dr` will only print resources, not create them.
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up --dry-run
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  --dry-run
+```
+
+```bash shorthand
+ethosian ws up dev:docker -dr
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -dr
+```
+
+</CodeGroup>
+
+### Show Debug logs (`--debug`)
+
+Use the `--debug` or `-d` flag to show debug logs.
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up -d
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  -d
+```
+
+```bash shorthand
+ethosian ws up dev:docker -d
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -d
+```
+
+</CodeGroup>
+
+### Force recreate images & containers (`-f`)
+
+Use the `--force` or `-f` flag to force recreate images & containers
+
+<CodeGroup>
+
+```bash flag
+ethosian ws up -f
+```
+
+```bash full options
+ethosian ws up \
+  --env dev \
+  --infra docker \
+  -f
+```
+
+```bash shorthand
+ethosian ws up dev:docker -f
+```
+
+```bash short options
+ethosian ws up \
+  -e dev \
+  -i docker \
+  -f
+```
+
+</CodeGroup>

@@ -1,0 +1,60 @@
+---
+title: Install & Upgrade
+---
+
+## Install ethosian
+
+We recommend installing `ethosian` using `pip` in a python virtual environment
+
+<Steps>
+  <Step title="Create a virtual environment">
+    Open the `Terminal` and create a python virtual environment.
+
+    <CodeGroup>
+
+    ```bash Mac
+    python3 -m venv ~/.venvs/aienv
+    source ~/.venvs/aienv/bin/activate
+    ```
+
+    ```bash Windows
+    python3 -m venv aienv
+    aienv/scripts/activate
+    ```
+
+    </CodeGroup>
+
+  </Step>
+  <Step title="Install ethosian">
+    Install the latest version of `ethosian`
+
+    <CodeGroup>
+
+    ```bash Mac
+    pip install -U ethosian
+    ```
+
+    ```bash Windows
+    pip install -U ethosian
+    ```
+
+    </CodeGroup>
+
+  </Step>
+</Steps>
+
+<Note>
+
+If you encounter errors, try updating pip using `python -m pip install --upgrade pip`
+
+</Note>
+
+---
+
+## Upgrade ethosian
+
+To upgrade `ethosian`, run this inside your virtual environment
+
+```bash
+pip install -U ethosian --no-cache-dir
+```
